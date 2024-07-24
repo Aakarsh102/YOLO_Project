@@ -1,0 +1,5 @@
+git clone https://github.com/ultralytics/yolov5
+cd yolov5
+
+pip install -r requirements.txt
+curl -L "https://app.roboflow.com/ds/z6u5X9y4rX?key=IE3aKE4OOG" > roboflow.zip; unzip roboflow.zip; rm roboflow.zip
