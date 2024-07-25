@@ -1,3 +1,4 @@
+import os
 # Ultralytics YOLOv5 🚀, AGPL-3.0 license
 """
 Run YOLOv5 detection inference on images, videos, directories, globs, YouTube, webcam, streams, etc.
@@ -65,6 +66,7 @@ from utils.general import (
 )
 from utils.torch_utils import select_device, smart_inference_mode
 
+count = 0
 
 @smart_inference_mode()
 def run(
@@ -303,6 +305,14 @@ def run(
 
         # Print time (inference-only)
         LOGGER.info(f"{s}{'' if len(det) else '(no detections), '}{dt[1].dt * 1E3:.1f}ms")
+        if len(det):
+            count += 1
+            if count == 5 :
+                os.system("pmset sleepnow")
+            
+        else :
+            count = 0
+        
 
     # Print results
     t = tuple(x.t / seen * 1e3 for x in dt)  # speeds per image
